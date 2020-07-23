@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Merienda+One&family=Montserrat:wght@100&family=Pacifico&family=Roboto+Mono&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <div class="container-fluid row">
         <div class="column left" style="background-color:#E9ECEF;">
           <div class="navigation text-center position-fixed">
-            <img src="files/head-shot.jpg" alt="kehinde photo" class="img-fluid"> <br>
+            <!-- <img src="files/head-shot.jpg" alt="kehinde photo" class="img-fluid"> <br> -->
           <ul>
               <li><a href="#">About</a></li>
               <li><a href="#">Programming</a></li>
@@ -73,9 +73,9 @@
           
         </div>
           <div class="col-lg-4">
-            <img src="files/kenny_and_ade.jpg" alt="Kenny and Ade Coding" class="img-fluid rounded">
+            <img src="{{url_for('static', filename='files/kenny_and_ade.jpg')}}" alt="Kenny and Ade Coding" class="img-fluid rounded">
             <figcaption class="figure-caption">Kenny and Ade Coding</figcaption>
-            <img src="files/kenny_speaking.jpg" alt="Kenny Speaking at a conference" class="img-fluid rounded">
+            <img src="{{url_for('static', filename='files/kenny_speaking.jpg')}}" alt="Kenny Speaking at a conference" class="img-fluid rounded">
             <figcaption class="figure-caption">Kenny Sharing his coding experience at Teens Code Conference</figcaption>
           </div>
           </div>
@@ -116,13 +116,13 @@
             <div class="message">
               Before the outbreak of the COVID-19 pandemic, I already had great impact records. For the <a href="https://microbit.org/do-your-bit/" target="_blank"> Microsoft Annual DoYourBit Challenge</a>, I have trained hundreds of kids from different schools on how to use a microBit to be eligible to take part in the competition. <br>
             </div>
-            <img src="files/kenny_training.jpg" alt="Kenny Training Kids on Microbit" class="img-fluid rounded">
+            <img src="{{url_for('static', filename='files/kenny_training.jpg')}}" alt="Kenny Training Kids on Microbit" class="img-fluid rounded">
             <figcaption class="figure-caption">Kenny Training Kids on Microbit</figcaption>
             
 
           </div>
           <div class="col-lg-6">
-            <img src="files/kenny_networking.jpg" alt="" class="img-fluid rounded">
+            <img src="{{url_for('static', filename='files/kenny_networking.jpg')}}" alt="" class="img-fluid rounded">
             <figcaption class="figure-caption">Sharing my coding story and networking</figcaption>
 
             <div class="message">
