@@ -12,8 +12,7 @@ class wisewords(wiseword):
 
     def create(self, wiseword):
         if wiseword is not None:
-            dict(wiseword)
-            return self.db.wisewords.insert(wiseword)
+            return self.db.wisewords.insert_one(wiseword.get_as_dict())
         else:
             return Exception("Nothing to save, because wiseword parameter is None")
 

@@ -126,3 +126,23 @@
 .contact{
     padding-bottom: 80px;
 }
+.gallery{
+    padding-bottom: 80px;
+}
+.wisewords{
+    padding-bottom: 80px;
+}
+.wiseword{
+    font-family: 'Satisfy', cursive;
+}
+/* Carousel */
+#carousel {
+    width:800px;
+    height: 300px;
+    display: relative;
+  }
+  #carousel img {
+    display: hidden; /* hide images until carousel prepares them */
+    cursor: pointer; /* not needed if you wrap carousel items in links */
+    height: 350px;
+  }

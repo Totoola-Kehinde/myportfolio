@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Merienda+One&family=Montserrat:wght@100&family=Pacifico&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/b4f3944b48.js"></script>
     <title>My Personal Website - Kehinde Totoola</title>
 </head>
@@ -141,9 +142,53 @@
           <div class="display-4 sub-heads">
             Gallery 📷📸
           </div>
+
+          <div id="carousel" class="justify-content-center">
+            <img src="{{url_for('static', filename='files/kenny_explaining.jpg')}}" alt="Kenny Explaining To a student" class="img-fluid" />
+            <img src="{{url_for('static', filename='files/unilag_students.jpg')}}" alt="Training at University Of Lagos" class="img-fluid" />
+            <img src="{{url_for('static', filename='files/me1.jpeg')}}" alt="Kenny Using Microbit" class="img-fluid" />
+            <img src="{{url_for('static', filename='files/kenny_assiting.jpg')}}" alt="Kenny Assisting students with their code" class="img-fluid" />
+            <img src="{{url_for('static', filename='files/kenny_coding.jpg')}}" alt="Kenny and Ayodeji Coding" class="img-fluid" />
+            </div>
           
 
         </div> <!-- Gallery Section -->
+        <hr>
+
+        <div class="wisewords container">
+          <div class="display-4 sub-heads">
+            Wise Men 📧
+          </div>
+          <div class="h3">
+            Jiggy Jigga Motivation
+          </div>
+          <div class="text-center justify-content-center">
+            {% for wiseword in allwords %}
+            <div class="wiseword">
+              {{wiseword.wiseword}}
+            </div>
+            {% endfor %}
+          </div>
+
+          <form method="POST">
+            {{form.hidden_tag()}}
+          <div class="form-group">
+            <label for="name">{{form.name.label()}}</label>
+            {{form.name(class='form-control')}} <br>
+              <label for="wiseword">{{form.wiseword.label()}}</label>
+              {{form.wiseword(rows='3', class='form-control')}} <br>
+            <div class="form-check">
+              <label class="form-check-label">
+                {{form.stayanonymous(class='form-check-input')}}
+                {{form.stayanonymous.label()}}
+              </label>
+            </div>
+            {{form.submit(class='btn btn-primary')}}
+          </div>
+          </form>
+
+        </div> <!-- Wisewords Section -->
+
         <hr>
 
         <div class="contact container">
@@ -172,6 +217,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/jquery.waterwheelCarousel.min.js')}}"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $("#carousel").waterwheelCarousel({
+            // include options like this:
+            // (use quotes only for string values, and no trailing comma after last option)
+            // option: value,
+            // option: value
+          });
+        });
+      </script>
     
 </body>
 </html>
