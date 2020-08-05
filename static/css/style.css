@@ -9,6 +9,7 @@
 .navigation{
     height: 100%;
     top: 25%;
+    z-index: 1;
 }
 .right {
     width: 80%;
@@ -35,6 +36,14 @@
   }
   .navigation img{
       display: none;
+  }
+  .navigation{
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .left ul{
+    display: inline-block;
+    text-align: center;
   }
 }
 .left ul li{

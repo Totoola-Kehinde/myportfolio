@@ -5,17 +5,26 @@ from controllers.wisewords import wisewords
 from models.wiseword import wiseword
 import settings
 
+# Simple App Configurations
 app = Flask(__name__)
 app.secret_key = settings.secret_key
 
 wisewordcontroller = wisewords()
 
+# Index Page Route
 @app.route('/', methods=['GET','POST'])
 def index():
     form = wisewordForm()
+
+    # GET Request
     if request.method == 'GET':
+        error = None
+        if wisewords.error_msg is not None:
+            error = wisewords.error_msg
         allwords = wisewordcontroller.read()
-        return render_template("index.html", form=form, allwords=allwords)
+        return render_template("index.html", form=form, allwords=allwords, error=error)
+    
+    # POST Request - When Form is Submitted
     if request.method == 'POST':
         if form.validate_on_submit:
             name = form.name.data
@@ -26,5 +35,6 @@ def index():
             wisewordcontroller.create(singlewiseword)
         return render_template("index.html", form=form)
 
+# Development Mode "Debug=True" to enable debugging
 if __name__ == "__main__":
     app.run(debug=True)

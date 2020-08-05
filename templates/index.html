@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid row">
         <div class="column left" style="background-color:#E9ECEF;">
-          <div class="navigation text-center position-fixed">
+          <div class="navigation text-center">
             <!-- <img src="files/head-shot.jpg" alt="kehinde photo" class="img-fluid"> <br> -->
           <ul>
               <li><a href="#">About</a></li>
@@ -24,6 +24,7 @@
               <li class=""><a href="#">Resume</a></li>
           </ul>
           </div>
+          
           
         </div> <!-- First Column Having the Navigations -->
         <div class="column right">
@@ -160,23 +161,94 @@
             Wise Men 📧
           </div>
           <div class="h3">
-            Jiggy Jigga Motivation
-          </div>
-          <div class="text-center justify-content-center">
-            {% for wiseword in allwords %}
-            <div class="wiseword">
-              {{wiseword.wiseword}}
-            </div>
-            {% endfor %}
+            Moments with wisemen is worth years of experience!
           </div>
 
+          <div class="text-center justify-content-center">
+
+            <!-- Prints An Error Message If There is Any! -->
+            {% if error != None %}
+
+            <div class="error-message">
+              {{ error }}
+            </div> <!-- Error Message -->
+
+            {% else %}
+
+            <!-- Load Wiseword contents from MongoDB To Carousel -->
+
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="card">
+                    <div class="card-header">
+                      Wisewords
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0 wiseword">
+                        <p>Just Testing If This Works Fine and Proper.</p>
+                        <footer class="blockquote-footer">
+                          Anonymous
+                        </footer>
+                      </blockquote>
+                    </div>
+                    <div class="card-footer text-muted">
+                      Some Days Ago
+                    </div>
+                  </div>
+
+                </div> <!-- First Carousel Item with class "active" -->
+                {% for wiseword in allwords %}
+                <div class="carousel-item">
+                  <div class="card">
+                    <div class="card-header">
+                      Wisewords
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0 wiseword">
+                        <p>{{wiseword.wiseword}}.</p>
+                        <footer class="blockquote-footer">
+                          {% if wiseword.anonymous == True %}
+                          Anonymous
+                          {% else %}
+                          {{wiseword.user}}
+      
+                          {% endif %}
+                        </footer>
+                      </blockquote>
+                    </div>
+                    <div class="card-footer text-muted">
+                      {{wiseword.daytime}}
+                    </div>
+                  </div> <!-- End Of Wisewords Call From MongoDB -->
+                </div> <!-- Carousel Item -->
+                {% endfor %}
+              </div>
+              <a class="carousel-control-prev text-primary bg-dark" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next text-primary bg-dark" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div> <!-- Carousel -->
+
+            {% endif %}
+
+          </div>
+
+          <hr style="width: 70%;">
+
+          <!-- Wisewords Form -->
           <form method="POST">
+            <legend>Bless Someone With Some words of wisemen Today!</legend>
             {{form.hidden_tag()}}
           <div class="form-group">
             <label for="name">{{form.name.label()}}</label>
             {{form.name(class='form-control')}} <br>
               <label for="wiseword">{{form.wiseword.label()}}</label>
-              {{form.wiseword(rows='3', class='form-control')}} <br>
+              {{form.wiseword(rows='5', class='form-control')}} <br>
             <div class="form-check">
               <label class="form-check-label">
                 {{form.stayanonymous(class='form-check-input')}}
@@ -227,6 +299,9 @@
             // option: value,
             // option: value
           });
+          $('.carousel').carousel({
+          interval: 2000
+        });
         });
       </script>
     
