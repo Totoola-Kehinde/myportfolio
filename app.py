@@ -31,9 +31,14 @@ def index():
             word = form.wiseword.data
             visible = form.stayanonymous.data
 
+            error = None
+            if wisewords.error_msg is not None:
+                error = wisewords.error_msg
+            allwords = wisewordcontroller.read()
+
             singlewiseword = wiseword(None, word, visible, name)
             wisewordcontroller.create(singlewiseword)
-        return render_template("index.html", form=form)
+        return render_template("index.html", form=form, allwords=allwords, error=error)
 
 # Development Mode "Debug=True" to enable debugging
 if __name__ == "__main__":
