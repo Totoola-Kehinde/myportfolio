@@ -32,7 +32,6 @@
 }
   .left{
       width: 100%;
-      opacity: 0.1;
   }
   .navigation img{
       display: none;
@@ -40,6 +39,7 @@
   .navigation{
     overflow: auto;
     white-space: nowrap;
+    opacity: 0;
   }
   .left ul{
     display: inline-block;
