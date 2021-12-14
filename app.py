@@ -38,7 +38,7 @@ def index():
 
             singlewiseword = wiseword(None, word, visible, name)
             wisewordcontroller.create(singlewiseword)
-        return render_template("index.html", form=form, allwords=allwords, error=error)
+        return redirect(url_for('index'))
 
 # Development Mode "Debug=True" to enable debugging
 if __name__ == "__main__":
